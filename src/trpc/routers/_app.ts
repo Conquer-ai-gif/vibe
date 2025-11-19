@@ -5,18 +5,18 @@ export const appRouter = createTRPCRouter({
   invoke:baseProcedure
   .input(
     z.object({
-      text: z.string(),
+      value: z.string(),
     }),
   )
    .mutation(async({input})=>{
     await inngest.send({
        name:"text/hello.world",
        data:{
-        email:input.text,
+        value:input.value,
        }
     })
-    return {ok:"success"}
-   })
+    return {ok:"success"};
+   }),
   createAI: baseProcedure
     .input(
       z.object({
