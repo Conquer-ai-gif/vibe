@@ -1,26 +1,31 @@
 "use client"
-//  import React  from 'react'
+ import {useState} from 'react'
 //  import {Suspense} from 'react'
- import { Button } from '@/components/ui/button'
+ import { Button } from '@/components/ui/button'  
+ import { Input } from '@/components/ui/input'  
+
 
 import {useTRPC} from "@/trpc/client"
 import {useMutation} from "@tanstack/react-query"
 
  
  const Page =  () => {
+    const [value,setValue]=useState("")
+
   const trpc=useTRPC()
-  const invoke =useMutation(trpc.invoke.mutationOption({
+  const invoke =useMutation(trpc.invoke.mutationOptions({
     onSuccess:()=>{
-      taost.success("background job")
+      // taost.success("background job")
     }
 
-  }))
+  })) 
 
    return (
  
     <div>
-      <Button disabled={invoke.isPending} onClick={()=> invoke.mutate({text:"john"})}>invoke</Button>
-      test
+      <Input  value={value} onChange={(e)=> setValue(e.target.value)}/>
+      <Button disabled={invoke.isPending} onClick={()=> invoke.mutate({value:value})}>invoke</Button>
+      test 
       </div>
    )
  }
