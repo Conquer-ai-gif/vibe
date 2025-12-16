@@ -34,7 +34,7 @@ export const codeAgentFunction = inngest.createFunction(
         createTool({
           name:'terminal',
           description:'Use the terminal to run command',
-          parameter: z.object({
+          parameters: z.object({
             command: z.string(),
           }),
           handler: async ({ command },{step}) => {
