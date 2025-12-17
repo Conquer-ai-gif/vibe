@@ -8,6 +8,7 @@ import {ResizableHandle,ResizablePanel,ResizablePanelGroup} from '@/components/u
 import { MessagesContainer } from "../components/messages-container";
 import { Suspense } from "react";
 import { ProjectHeader } from "../components/project-header";
+import { FragmentWeb } from "../components/fragment-web";
 
 interface Props {
     projectId: string;
@@ -51,7 +52,7 @@ interface Props {
                      minSize={50}
                      className=""
                 >
-                  todo preview
+                 {!!activeFragment && <FragmentWeb data={activeFragment}/>}
                 </ResizablePanel>
             </ResizablePanelGroup>
         </div>
