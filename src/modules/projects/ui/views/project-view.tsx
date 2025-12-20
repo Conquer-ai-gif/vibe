@@ -77,7 +77,7 @@ interface Props {
                              </TabsList>
 
                              <div className="ml-auto flex items-center gap-x-2">
-                                <Button asChild size="sm" variant={default}>
+                                <Button asChild size="sm" variant="tertiary">
                                     <Link href="pricing">
                                         <CrownIcon/> Upgrade
                                     </Link>                                
@@ -102,3 +102,6 @@ interface Props {
     )
 
  }
+
+ tertiary:
+          {/* "bg-primary/25 dark:bg-primary/30 text-primary shadow-xs hover:bg-primary/20 dark:hover:bg-primary/25", */}
