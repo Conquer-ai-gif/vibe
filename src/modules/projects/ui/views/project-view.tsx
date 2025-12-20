@@ -15,6 +15,7 @@ import { Suspense, useState } from "react";
 import { EyeIcon ,CodeIcon,CrownIcon} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { UserControl } from "@/components/user-control";
 
 
 interface Props {
@@ -82,6 +83,7 @@ interface Props {
                                         <CrownIcon/> Upgrade
                                     </Link>                                
                                 </Button>
+                                <UserControl/>
                              </div>
                         {/* </div> */}
                         <TabsContent value="preview">
