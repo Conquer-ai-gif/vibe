@@ -3,6 +3,7 @@ import {useForm} from 'react-hook-form'
 import {toast} from 'sonner'
 import { useState } from 'react';
 import {z} from 'zod'
+import {useClerk} from '@clerk/nextjs'
 import {zodResolver} from '@hookform/resolvers/zod'
 import TextareaAutosize  from 'react-textarea-autosize'
 import { ArrowUpIcon,Loader2Icon } from 'lucide-react';
@@ -26,6 +27,7 @@ export const ProjectForm=()=>{
     
     const router = useRouter()
     const trpc =useTRPC();
+    const clerk = useClerk()
     const queryClient = useQueryClient();
     const form = useForm<z.infer<typeof formSchema>>({
         resolver:zodResolver(formSchema),
@@ -45,6 +47,11 @@ export const ProjectForm=()=>{
         onError:(error)=>{
 
             toast.error(error.message);
+            
+            if(error.data?.code === "UNAUTHORIZED"){
+                clerk.openSignIn();
+            }
+
         }
     }));
 

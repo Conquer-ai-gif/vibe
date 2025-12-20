@@ -18,7 +18,7 @@ export const codeAgentFunction = inngest.createFunction(
   { event: "code-agent/run" },
   async ({ event,step }) => {
   const sandboxId = await step.run('get-sandbox-id', async () => {
-    const sandbox = await Sandbox.create('sandbox id')
+    const sandbox = await Sandbox.create('ai-code-generator')
     return sandbox.sandboxId;
   });
 
@@ -38,7 +38,7 @@ export const codeAgentFunction = inngest.createFunction(
             command: z.string(),
           }),
           handler: async ({ command },{step}) => {
-            return await step?.run('terminal:', async () => {
+            return await step?.run('terminal', async () => {
               const buffers ={stdout:"",stderr:""};
               try{
                 const sandbox =await getSandbox(sandboxId);
