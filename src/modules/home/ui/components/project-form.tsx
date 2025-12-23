@@ -41,8 +41,12 @@ export const ProjectForm=()=>{
             queryClient.invalidateQueries(
                 trpc.projects.getMany.queryOptions(),
             );
+            queryClient.invalidateQueries(
+                trpc.usage.status.QueryOptions()
+            )
             router.push(`/projects/${data.id}`);
             // toast.success('Message created successfully');
+
         },
         onError:(error)=>{
 
@@ -52,7 +56,11 @@ export const ProjectForm=()=>{
                 clerk.openSignIn();
             }
 
-        }
+            if(error.data?.code === 'TOO_MANY_REQUESTS'){
+                router.push('/pricing');
+            }
+
+        },
     }));
 
     const onSubmit = async(value:z.infer<typeof formSchema>)=>{

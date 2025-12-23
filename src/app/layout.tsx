@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { TRPCReactProvider } from "@/trpc/client";
-import {Toaster} from "@/components/ui/sonner"
 import { ThemeProvider } from "next-themes";
+// import { Geist, Geist_Mono } from "next/font/google";
+import {ClerkProvider} "@clerk/nextjs"
+
+import {Toaster} from "@/components/ui/sonner"
+import { TRPCReactProvider } from "@/trpc/client";
+
+import "./globals.css";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -26,6 +29,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider
+      appearance={{
+        variables:{
+          colorPrimary:'#C96342'
+        }
+      }}
+    >
     <TRPCReactProvider>
         <html lang="en" suppressHydrationWarning>
           <body
@@ -44,5 +54,6 @@ export default function RootLayout({
           </body>
         </html>
     </TRPCReactProvider>
+    </ClerkProvider>
   );
 }
