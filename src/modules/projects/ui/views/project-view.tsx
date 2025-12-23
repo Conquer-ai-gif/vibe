@@ -16,6 +16,7 @@ import { EyeIcon ,CodeIcon,CrownIcon} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { UserControl } from "@/components/user-control";
+import {ErrorBoundary} from 'reac-error-boundary'
 
 
 interface Props {
@@ -39,20 +40,25 @@ interface Props {
                     minSize={20}
                     className='flex flex-col min-h-0'
                 >
-                 <Suspense fallback={<p>loading project..</p>}>
-                 <ProjectHeader
-                  projectId={projectId}
-                />
-                </Suspense>
-                
-                <Suspense fallback={<p>loading messages...</p>}>
-                  <MessagesContainer 
+                    <ErrorBoundary fallback={<p>Project header error</p>}>
 
-                  projectId={projectId}
-                  activeFragment={activeFragment}
-                  setActiveFragment={setActiveFragment}
-                  />
-                </Suspense>
+                        <Suspense fallback={<p>loading project..</p>}>
+                        <ProjectHeader
+                        projectId={projectId}
+                        />
+                        </Suspense>
+                    </ErrorBoundary>
+                 <ErrorBoundary fallback={<p>Messages container error</p>}>
+
+                    <Suspense fallback={<p>loading messages...</p>}>
+                    <MessagesContainer 
+
+                    projectId={projectId}
+                    activeFragment={activeFragment}
+                    setActiveFragment={setActiveFragment}
+                    />
+                    </Suspense>
+                </ErrorBoundary>
                 </ResizablePanel>
                 <ResizableHandle className="hover:bg-primary transition-colors"/>
                 <ResizablePanel
