@@ -9,7 +9,7 @@ const DURATION = 30*24*60*60 //30 DAYS
 const GENERATION_COST=1
 
 
-export async function getUsageTracker()=>{
+export async function getUsageTracker(){
     const {has} =await auth();
     const hasProAccess=has({plan:'pro'});
     const usageTracker= new RateLimiterPrisma({

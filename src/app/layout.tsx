@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 // import { Geist, Geist_Mono } from "next/font/google";
-import {ClerkProvider} "@clerk/nextjs"
+import {ClerkProvider} from "@clerk/nextjs"
 
 import {Toaster} from "@/components/ui/sonner"
 import { TRPCReactProvider } from "@/trpc/client";
