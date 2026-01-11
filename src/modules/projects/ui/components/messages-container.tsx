@@ -14,7 +14,7 @@ interface Props {
 
 export const MessagesContainer = ({projectId,activeFragment,setActiveFragment}:Props)=>{
     const trpc = useTRPC()
-    const bottomRef = useRef<HTMLButtonElement>(null);
+    const bottomRef = useRef<HTMLButtonElement | null>(null);
     const lastAssistantMessageIdRef = useRef<string | null>(null)
 
      const {data:messages}=useSuspenseQuery(trpc.messages.getMany.queryOptions({

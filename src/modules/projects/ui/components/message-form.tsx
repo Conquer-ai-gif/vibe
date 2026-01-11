@@ -46,7 +46,7 @@ export const MessageForm=({projectId}:Props)=>{
             queryClient.invalidateQueries(
                 trpc.messages.getMany.queryOptions({projectId}),
             );
-            queryClient.invalidateqQueries(
+            queryClient.invalidateQueries(
                 trpc.usage.status.queryOptions()
             );
             // toast.success('Message created successfully');
@@ -115,7 +115,7 @@ export const MessageForm=({projectId}:Props)=>{
                 <div className="flex gap-x-2items-end justify-between pt-2">
                     <div className="text-[10px] text-muted-foreground font-mono">
                       <kbd className="ml-auto pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium ktext-muted-foreground  ">
-                        <span>#8984</span>
+                        <span>Enter</span>
                       </kbd>
                       &nbsp; to submit
                     </div>
@@ -130,9 +130,10 @@ export const MessageForm=({projectId}:Props)=>{
                          ) :(
                         <ArrowUpIcon/>
                         )}
-                    </Button>
+                    </Button> 
                 </div>
             </form>
         </Form >
     )
 }
+
