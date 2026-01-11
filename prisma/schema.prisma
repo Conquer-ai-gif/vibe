@@ -64,6 +64,6 @@ model Fragment {
 
 model Usage{
   key String @id
-  point init
+  point Int
   expire DateTime?
 }
