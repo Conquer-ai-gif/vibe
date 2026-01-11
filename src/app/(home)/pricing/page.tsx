@@ -27,7 +27,7 @@ const Page =()=>{
                 </p>
             <PricingTable 
                 appearance={{
-                    baseTheme: currentTheme==='dark' ? dark :undefined
+                    baseTheme: currentTheme==='dark' ? dark :undefined,
                     elements:{
                         PricingTableCard:'border! shadow-none! rounded-lg!'
                     }
